@@ -12,3 +12,8 @@ include_directories(${PROJECT_SOURCE_DIR}/Source)
 
 add_subdirectory(Source)
 add_subdirectory(Testing)
+
+option(BUILD_WRAPPERS "Wrap library" OFF)
+if(BUILD_WRAPPERS)
+   add_subdirectory(Wrapping)
+endif(BUILD_WRAPPERS)

@@ -1,27 +1,26 @@
-/* =========================================================================
- *
- *  Copyright Insight Software Consortium
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0.txt
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- *=========================================================================*/
+/*=========================================================================
 
+  Program:   Insight Segmentation & Registration Toolkit
+  Module:    $RCSfile: itkImageToVTKImageFilter.h,v $
+  Language:  C++
+  Date:      $Date: 2006/10/18 13:55:58 $
+  Version:   $Revision: 1.3 $
+
+  Copyright (c) 2002 Insight Consortium. All rights reserved.
+  See ITKCopyright.txt or http://www.itk.org/HTML/Copyright.htm for details.
+
+     This software is distributed WITHOUT ANY WARRANTY; without even
+     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+     PURPOSE.  See the above copyright notices for more information.
+
+=========================================================================*/
 #ifndef __itkImageToVTKImageFilter_h
 #define __itkImageToVTKImageFilter_h
 
 #include "itkVTKImageExport.h"
 #include "vtkImageImport.h"
 #include "vtkImageData.h"
+#include <vector>
 
 namespace itk
 {
@@ -43,7 +42,7 @@ class ITK_EXPORT ImageToVTKImageFilter : public ProcessObject
 {
 public:
   /** Standard class typedefs. */
-  typedef ImageToVTKImageFilter       Self;
+  typedef ImageToVTKImageFilter     Self;
   typedef ProcessObject             Superclass;
   typedef SmartPointer<Self>        Pointer;
   typedef SmartPointer<const Self>  ConstPointer;
@@ -55,9 +54,9 @@ public:
   itkTypeMacro(ImageToVTKImageFilter, ProcessObject);
 
   /** Some typedefs. */
-  typedef TInputImage InputImageType;
+  typedef TInputImage                                 InputImageType;
   typedef typename    InputImageType::ConstPointer    InputImagePointer;
-  typedef VTKImageExport< InputImageType>            ExporterFilterType;
+  typedef VTKImageExport< InputImageType>             ExporterFilterType;
   typedef typename ExporterFilterType::Pointer        ExporterFilterPointer;
 
   /** Get the output in the form of a vtkImage.
@@ -80,6 +79,7 @@ public:
   /** This call delegate the update to the importer */
   void Update();
 
+
 protected:
   ImageToVTKImageFilter();
   virtual ~ImageToVTKImageFilter();
@@ -100,6 +100,3 @@ private:
 #endif
 
 #endif
-
-
-
